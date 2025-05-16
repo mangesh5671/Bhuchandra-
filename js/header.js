@@ -1,63 +1,67 @@
-// Dropdown functionality
-const dropdownButtons = document.querySelectorAll('nav button');
-
-if (dropdownButtons.length > 0) {
-  dropdownButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', !expanded);
-      console.log('Dropdown clicked:', button.textContent.trim());
-    });
-  });
-}
-
-// Mobile menu toggle functionality
-const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-const nav = document.querySelector('nav');
-const menuOverlay = document.querySelector('.menu-overlay');
-
-if (mobileMenuToggle && nav && menuOverlay) {
-  mobileMenuToggle.addEventListener('click', function () {
-    this.classList.toggle('menu-open');
-    nav.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
-    this.setAttribute('aria-expanded', this.classList.contains('menu-open'));
-  });
-
-  menuOverlay.addEventListener('click', function () {
-    mobileMenuToggle.classList.remove('menu-open');
-    nav.classList.remove('active');
-    this.classList.remove('active');
-    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-  });
-}
-
-// Navigation active state handler
-document.addEventListener('DOMContentLoaded', function () {
-  const path = window.location.pathname;
-  const page = path.split("/").pop();
-
-  const navLinks = document.querySelectorAll('nav a');
-
-  if (navLinks.length > 0) {
-    navLinks.forEach(link => link.classList.remove('active'));
-
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-
-      if ((page === '' || page === '/' || page === 'index.html') &&
-          (href === 'index.html' || href === '/' || href === '')) {
-        link.classList.add('active');
-      } else if (href === page || href === `/${page}`) {
-        link.classList.add('active');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', function (e) {
-        navLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
+// Enhanced navigation script that reliably highlights the current page tab
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to get the current page
+  function getCurrentPage() {
+    // Get the pathname from URL (e.g., /about.html or /index.html)
+    const path = window.location.pathname;
+    
+    // Extract just the filename
+    let currentPage = path.split("/").pop();
+    
+    // If empty (like / or empty string), treat as index.html
+    if (!currentPage) {
+      currentPage = 'index.html';
+    }
+    
+    console.log('Current page detected:', currentPage);
+    return currentPage;
   }
+  
+  // Get the current page
+  const currentPage = getCurrentPage();
+  
+  // Get all navigation links
+  const navLinks = document.querySelectorAll('nav a');
+  
+  // First remove active class from all links
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  // Function to check if a link should be active
+  function shouldBeActive(href, currentPage) {
+    // Clean up the href and currentPage for comparison
+    href = href.replace(/^\//, ''); // Remove leading slash if any
+    
+    // Handle index/home page special cases
+    if ((currentPage === 'index.html' || currentPage === '') && 
+        (href === 'index.html' || href === '/' || href === '')) {
+      return true;
+    }
+    
+    // Direct match
+    if (href === currentPage) {
+      return true;
+    }
+    
+    // Handle case where href might not have .html extension
+    const hrefBase = href.replace(/\.html$/, '');
+    const currentBase = currentPage.replace(/\.html$/, '');
+    
+    if (hrefBase === currentBase && hrefBase !== '') {
+      return true;
+    }
+    
+    return false;
+  }
+  
+  // Apply active class to the appropriate link
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    
+    if (href && shouldBeActive(href, currentPage)) {
+      console.log('Setting active class for:', href);
+      link.classList.add('active');
+    }
+  });
 });
