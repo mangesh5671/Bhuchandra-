@@ -40,52 +40,65 @@ ul {
 header {
     background-color: white;
     padding: 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 90px;
-    padding-top: 50px;
 }
 
 header > div {
     max-width: 1120px;
     width: 100%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 3rem;
+    position: relative;
 }
 
-/*header img {
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
     height: 70px;
     width: auto;
-}*/
+}
+
+.title-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
 
 header h1 {
-    color: #1b1401; /* Updated color */
+    color: #1b1401;
     font-weight: 600;
-    font-size: 1.775rem; /* 3xl */
+    font-size: 1.775rem;
     line-height: 1.2;
-    max-width: 640px;
-    margin-left: 215px;
-    margin-top: -13px;
+    margin: 0;
 }
 
 header p {
     font-size: 11px;
     font-weight: 600;
     color: black;
-    margin-top: -0.25rem;
-    text-align: center;
-    margin-left: 90px;
+    margin: 0;
+    margin-top: 2px;
+    padding-left: 60px;
+}
+
+/* Menu container to ensure the hamburger is properly aligned */
+.menu-container {
+    display: flex;
+    align-items: center;
 }
 
 /* Navigation */
 nav {
-    background-color: #f4c542; /* Updated color */
+    background-color: #f4c542;
     color: white;
-    font-size: 0.75rem; /* xs */
+    font-size: 0.75rem;
     font-weight: 400;
 }
 
@@ -111,7 +124,7 @@ nav li {
 nav a,
 nav button {
     color: white;
-    font-size: 0.875rem; /* sm */
+    font-size: 0.875rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -132,7 +145,7 @@ nav button:hover {
 
 nav a.active {
     background-color: white;
-    color: #f4c542; /* Updated color */
+    color: #f4c542;
     font-weight: 600;
 }
 
@@ -160,47 +173,6 @@ nav i {
     box-shadow: 6px 6px 12px #b3b3b3, -6px -6px 12px #ffffff;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    body {
-        padding-top: 140px; /* Less padding on mobile */
-    }
-
-    header > div,
-    nav > div,
-    .main-content {
-        padding: 0 1rem;
-    }
-
-    header h1 {
-        font-size: 1 .6rem; /* 2xl */
-        font-weight: 700;
-        text-align: left;
-        margin-left: -7px;
-    }
-    header p {
-        margin-left: -5px;
-    }
-
-    nav ul {
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding-top: 130px;
-    }
-
-    header h1 {
-        font-size: 0.9rem; /* xl */
-    }
-
-    header img {
-        height: 50px;
-    }
-}
-
 /* Mobile Navigation Hamburger Menu */
 .mobile-menu-toggle {
     display: none;
@@ -208,9 +180,6 @@ nav i {
     background: none;
     border: none;
     padding: 10px;
-    position: absolute;
-    right: 3px;
-    top: 20px;
     z-index: 1001;
 }
 
@@ -220,14 +189,13 @@ nav i {
     justify-content: space-between;
     height: 14px;
     width: 20px;
-    margin-top: -65px;
 }
 
 .hamburger-lines .line {
     display: block;
     height: 3px;
     width: 100%;
-    background-color: #352b0f; /* Updated color */
+    background-color: #352b0f;
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -259,16 +227,47 @@ nav i {
     transform: rotate(-45deg);
 }
 
-/* Responsive Navigation */
+/* Responsive adjustments */
 @media (max-width: 768px) {
+    body {
+        padding-top: 140px; /* Less padding on mobile */
+    }
+
+    header > div,
+    nav > div,
+    .main-content {
+        padding: 0 1rem;
+    }
+
+    .logo-container img {
+        height: 50px;
+    }
+
+    .title-container {
+        position: static;
+        transform: none;
+        flex: 1;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    header p {
+
+        font-size: 8px;
+        margin: 0px;
+        padding: 0;
+    }
+
     .mobile-menu-toggle {
         display: flex;
     }
+}
 
-    header > div {
-        position: relative;
-    }
-
+/* Responsive Navigation */
+@media (max-width: 768px) {
     nav > div {
         max-width: 100%;
         padding: 0;
@@ -279,7 +278,7 @@ nav i {
         flex-direction: column;
         width: 250px; /* Set fixed width for the menu */
         height: 100vh; /* Full height */
-        background-color: #f4c542; /* Updated color */
+        background-color: #f4c542;
         position: fixed;
         top: 0;
         right: -250px; /* Start off-screen to the right */
