@@ -60,8 +60,9 @@ header > div {
 }
 
 .logo-container img {
-    height: 70px;
+   height: 80px;
     width: auto;
+    margin-top: -15px;
 }
 
 .title-container {
