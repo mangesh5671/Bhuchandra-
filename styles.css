@@ -1576,7 +1576,10 @@ body.bhuchandra-modal-open {
 
 /* Modal Body */
 .modal-body {
-  padding: 25px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Top Section Layout */
@@ -1618,10 +1621,8 @@ body.bhuchandra-modal-open {
 }
 
 .info-container p {
-  margin: 0 0 12px 0;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #444;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .info-container p strong {
@@ -1631,11 +1632,12 @@ body.bhuchandra-modal-open {
 
 /* Description Section */
 .description-section {
-  margin-top: 20px;
-  padding: 20px;
   background-color: #fff;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  display: block;
 }
 
 .description-section h3 {
@@ -1658,9 +1660,16 @@ body.bhuchandra-modal-open {
 }
 
 .description-section p {
-  color: #555;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6c757d;
   margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  word-wrap: break-word;
+  display: block;
+  max-width: 100%;
 }
 
 /* Body class when modal is open */
