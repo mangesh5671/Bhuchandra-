@@ -945,6 +945,7 @@ section.hero button:hover {
   font-size: 1.15rem;
   margin-bottom: 30px;
   opacity: 0.9;
+  margin-left: 380px;
 }
 
 .cta-buttons {
@@ -1059,6 +1060,9 @@ section.hero button:hover {
   
   .cta-section h3 {
     font-size: 1.75rem;
+  }
+  .cta-section p{
+    margin: 0;
   }
 }
 
