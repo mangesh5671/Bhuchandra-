@@ -328,7 +328,7 @@ nav i {
 
 /* Hero Section Animation */
 .hero .bg-image {
-    animation: zoomInAnimation 20s forwards ease-in-out;
+    animation: zoomInAnimation 12s forwards ease-in-out;
 }
 
 @keyframes zoomInAnimation {
