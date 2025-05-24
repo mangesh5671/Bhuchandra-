@@ -721,8 +721,8 @@ section.welcome {
 
 /* Key Objectives Section */
 .key-objectives {
-    background: linear-gradient(to top, rgb(0, 0, 0), rgb(93, 94, 83));
-    color: white;
+   background: linear-gradient(to top, rgb(206, 205, 205), rgb(237, 237, 237));
+    color: rgb(0, 0, 0);
 }
 
 .key-objectives h1 {
