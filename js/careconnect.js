@@ -58,3 +58,89 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+
+
+
+
+
+// Enhanced animation system
+        const posts = document.querySelectorAll('.instagram-post');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                    }, index * 100); // Staggered animation
+                }
+            });
+        }, observerOptions);
+
+        // Initialize posts
+        posts.forEach((post, index) => {
+            post.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(post);
+        });
+
+        // Enhanced loading simulation
+        function loadInstagramPosts() {
+            console.log('🔄 Loading Instagram posts...');
+            
+            // Simulate API call
+            setTimeout(() => {
+                console.log('✅ Instagram posts loaded successfully!');
+                
+                // Add pulse effect to new posts
+                const newPosts = document.querySelectorAll('.instagram-post:not(.loaded)');
+                newPosts.forEach(post => {
+                    post.classList.add('loaded');
+                });
+            }, 1000);
+        }
+
+        // Performance optimization
+        let ticking = false;
+        
+        function updateAnimations() {
+            // Update any scroll-based animations here
+            ticking = false;
+        }
+        
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateAnimations);
+                ticking = true;
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            loadInstagramPosts();
+            
+            // Add smooth scrolling behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
+        });
+
+        // Add interaction feedback
+        posts.forEach(post => {
+            post.addEventListener('mouseenter', () => {
+                post.style.zIndex = '10';
+            });
+            
+            post.addEventListener('mouseleave', () => {
+                post.style.zIndex = '1';
+            });
+        });
+
+        // Handle scroll events efficiently
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(requestTick, 10);
+        });
