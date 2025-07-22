@@ -43,14 +43,26 @@
     <!-- Navigation bar -->
     <nav>
       <div>
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/care_connect.html">CARE Connect</a></li>
-          <li><a href="/scholarship.html">Scholarships</a></li>
-          <li><a href="/career.html">Career</a></li>
-          <li><a href="/contact_us.html">Contact Us</a></li>
-        </ul>
+       <ul class="menu">
+  <li><a href="/index.html">Home</a></li>
+  <li><a href="/about.html">About Us</a></li>
+  
+  <!-- Dropdown -->
+  <li class="dropdown" id="careDropdown">
+    <button onclick="toggleDropdown()" class="dropdown-toggle">
+      CARE Connect <span style="margin-left: 4px;">▼</span>
+    </button>
+    <ul id="careSubmenu" class="dropdown-menu hidden">
+      <li><a href="/care_connect.html">CARE Connect</a></li>
+      <li><a href="/cyber.html">Cyber Sarthi</a></li>
+    </ul>
+  </li>
+
+  <li><a href="/scholarship.html">Scholarships</a></li>
+  <li><a href="/career.html">Career</a></li>
+  <li><a href="/contact_us.html">Contact Us</a></li>
+</ul>
+
       </div>
     </nav>
   </div>
@@ -693,5 +705,12 @@
   <script src="/js/indext.js"></script>
   <script src="/js/navscript.js"></script>
   <script src="/js/blog.js"></script>
+  <script>
+  function toggleDropdown() {
+    const submenu = document.getElementById('careSubmenu');
+    submenu.classList.toggle('hidden');
+  }
+</script>
+
 </body>
 </html>
