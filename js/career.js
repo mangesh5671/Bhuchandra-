@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             if (index === 0 || index === 1) {
                 // Job and Opportunities
-                alert('Thank you! Your application has been submitted successfully.');
+                alert('Coming Soon! The application will be available shortly.');
             } else if (index === 2) {
                 // Volunteer
                 openModal();
