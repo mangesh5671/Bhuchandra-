@@ -40,30 +40,20 @@
   </div>
 </header>
 
-  <!-- Navigation bar -->
-<nav>
-  <div>
-    <ul class="menu">
-      <li><a href="/index.html">Home</a></li>
-      <li><a href="/about.html">About Us</a></li>
-
-      <!-- Dropdown -->
-      <li class="dropdown" id="careDropdown">
-        <button onclick="toggleDropdown()" class="dropdown-toggle">
-          CARE Connect <span style="margin-left: 4px;">▼</span>
-        </button>
-        <ul id="careSubmenu" class="dropdown-menu hidden">
-          <li><a href="/care_connect.html" onclick="updateMenuTitle('CARE Connect')">CARE Connect</a></li>
-          <li><a href="/cyber.html" onclick="updateMenuTitle('Cyber Sarthi')">Cyber Sarthi</a></li>
+    <!-- Navigation bar -->
+    <nav>
+      <div>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/about.html">About Us</a></li>
+          <li><a href="/care_connect.html">CARE Connect</a></li>
+          <li><a href="/cyber.html">Cyber Sarthi</a></li>
+          <li><a href="/scholarship.html">Scholarships</a></li>
+          <li><a href="/career.html">Career</a></li>
+          <li><a href="/contact_us.html">Contact Us</a></li>
         </ul>
-      </li>
-
-      <li><a href="/scholarship.html">Scholarships</a></li>
-      <li><a href="/career.html">Career</a></li>
-      <li><a href="/contact_us.html">Contact Us</a></li>
-    </ul>
-  </div>
-</nav>
+      </div>
+    </nav>
   </div>
 
   <!-- Hero section full screen black overlay -->
@@ -678,6 +668,7 @@
           <li><i class="fas fa-check"></i><a href="index.html">Home</a></li>
           <li><i class="fas fa-check"></i><a href="about.html">About Us</a></li>
           <li><i class="fas fa-check"></i><a href="care_connect.html">CARE Connect</a></li>
+          <li><i class="fas fa-check"></i><a href="cyber.html">Cyber Sarthi</a></li>
           <li><i class="fas fa-check"></i><a href="scholarship.html">Scholarship</a></li>
           <li><i class="fas fa-check"></i><a href="career.html">Career</a></li>
           <li><i class="fas fa-check"></i><a href="contact_us.html">Contact</a></li>
@@ -704,22 +695,5 @@
   <script src="/js/indext.js"></script>
   <script src="/js/navscript.js"></script>
   <script src="/js/blog.js"></script>
-  <script>
-  function toggleDropdown() {
-    const dropdown = document.getElementById("careDropdown");
-    dropdown.classList.toggle("hidden");
-  }
-
-  // Optional: close dropdown when clicking outside
-  window.addEventListener('click', function(e) {
-    const button = document.querySelector('.dropdown-btn');
-    const dropdown = document.getElementById("careDropdown");
-    if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.add("hidden");
-    }
-  });
-</script>
-
-
 </body>
 </html>
