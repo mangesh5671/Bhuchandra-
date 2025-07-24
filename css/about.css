@@ -405,6 +405,108 @@ nav i {
     }
 }
 
+
+
+
+
+/* Existing styles retained ... */
+
+/* ✅ DROPDOWN STYLES */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-button {
+    background: none;
+    border: none;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover,
+.dropdown-button.active {
+    text-decoration: underline;
+}
+
+.dropdown-arrow {
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #dcb93c;
+    min-width: 200px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.dropdown[aria-expanded="true"] .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: #b89d2f;
+}
+
+/* ✅ MOBILE DROPDOWN SUPPORT */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static;
+        background-color: #e0b83c;
+        box-shadow: none;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        padding-left: 1.25rem;
+    }
+
+    .dropdown[aria-expanded="true"] .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        border: none;
+        padding: 0.75rem 0;
+        font-size: 0.95rem;
+    }
+}
+
+
+
+
+
+
 /* Apply animations to specific elements */
 .hero .text-block {
     animation-delay: 0.5s;

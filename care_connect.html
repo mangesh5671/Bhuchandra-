@@ -42,20 +42,65 @@
 </header>
 
 
-    <!-- Navigation bar -->
-    <nav>
-      <div>
-        <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/about.html">About Us</a></li>
-          <li><a href="/care_connect.html">CARE Connect</a></li>
-          <li><a href="/cyber.html">Cyber Sarthi</a></li>
-          <li><a href="/scholarship.html">Scholarships</a></li>
-          <li><a href="/career.html">Career</a></li>
-          <li><a href="/contact_us.html">Contact Us</a></li>
-        </ul>
-      </div>
-    </nav>
+  <!-- Navigation Bar -->
+<nav class="bg-yellow-400 shadow">
+  <div class="max-w-7xl mx-auto px-4">
+    <ul class="flex space-x-6 py-4 text-sm font-medium text-white items-center">
+      <li><a href="index.html" class="hover:text-black">Home</a></li>
+      <li><a href="about.html" class="hover:text-black">About Us</a></li>
+
+      <!-- Dropdown -->
+      <li class="dropdown relative" aria-expanded="false">
+        <button class="dropdown-button flex items-center gap-1 hover:text-black focus:outline-none" aria-haspopup="true" style="text-decoration: none;">
+          CARE Connect
+          <span class="dropdown-arrow transition-transform">▼</span>
+        </button>
+        <div class="dropdown-menu absolute hidden mt-2 w-48 bg-white text-gray-700 border border-gray-300 shadow-md rounded z-50">
+          <a href="care_connect.html" class="block px-4 py-2 hover:bg-gray-100">CARE Connect Main</a>
+          <a href="cyber.html" class="block px-4 py-2 hover:bg-gray-100">Cyber Sarthi</a>
+        </div>
+      </li>
+
+      <li><a href="scholarship.html" class="hover:text-black">Scholarships</a></li>
+      <li><a href="career.html" class="hover:text-black">Career</a></li>
+      <li><a href="contact_us.html" class="hover:text-black">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    dropdowns.forEach(dropdown => {
+      const button = dropdown.querySelector('.dropdown-button');
+      const menu = dropdown.querySelector('.dropdown-menu');
+
+      // Toggle on click
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isOpen = dropdown.getAttribute('aria-expanded') === 'true';
+        dropdown.setAttribute('aria-expanded', !isOpen);
+        menu.classList.toggle('hidden', isOpen); // hide if open
+      });
+    });
+
+    // Close dropdown if clicked outside
+    document.addEventListener('click', function (e) {
+      dropdowns.forEach(dropdown => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.setAttribute('aria-expanded', 'false');
+          dropdown.querySelector('.dropdown-menu').classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+  <div class="menu-overlay"></div>
   </div>
 
   <!-- Hero section full screen black overlay -->
